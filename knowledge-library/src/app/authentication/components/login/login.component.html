@@ -1,1 +1,47 @@
-<p>login works!</p>
+<div class="row justify-content-center">
+  <div class="col-auto p-4 mt-4 bg-light">
+    <form [formGroup]="logInForm" (ngSubmit)="logIn()">
+      <div class="mb-3">
+        <label for="emailControl" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="emailControl"
+          formControlName="email"
+        />
+        <div
+          *ngIf="email && email.invalid && (email.dirty || email.touched)"
+          class="alert alert-danger mt-4"
+        >
+          <div *ngIf="email.errors?.['required']">E-mail is required.</div>
+          <div *ngIf="email.errors?.['email']">
+            E-mail needs to be a valid e-mail address.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="passwordControl" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="passwordControl"
+          formControlName="password"
+        />
+      </div>
+      <div
+        *ngIf="
+          password && password.invalid && (password.dirty || password.touched)
+        "
+        class="alert alert-danger mt-4"
+      >
+        <div *ngIf="password.errors?.['required']">Password is required.</div>
+        <div *ngIf="password.errors?.['minlength']">
+          Min length is 6 characters.
+        </div>
+      </div>
+      <button class="btn btn-primary" [disabled]="logInForm.invalid">
+        Log in
+      </button>
+    </form>
+  </div>
+</div>
