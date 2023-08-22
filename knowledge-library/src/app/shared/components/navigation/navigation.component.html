@@ -19,18 +19,20 @@
         </li>
       </ul>
       <ul class="navbar-nav d-flex">
-        <li *ngIf="!loggedIn" class="nav-item">
+        <li *ngIf="!isLoggedIn" class="nav-item">
           <a routerLink="/login" routerLinkActive="active" class="nav-link"
             >Log in</a
           >
         </li>
-        <li *ngIf="loggedIn" class="nav-item">
+        <li *ngIf="isLoggedIn" class="nav-item">
           <a (click)="logOut()" routerLinkActive="active" class="nav-link"
             >Log out</a
           >
         </li>
         <li class="nav-item">
-          <a routerLink="/register" class="nav-link">Register</a>
+          <a routerLink="/register" class="nav-link"
+            >Register {{ isLoggedIn }}</a
+          >
         </li>
       </ul>
     </div>

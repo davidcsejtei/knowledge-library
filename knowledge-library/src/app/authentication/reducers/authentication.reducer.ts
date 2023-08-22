@@ -9,8 +9,8 @@ const initialState: State = { token: '' };
 
 export const authenticationReducer = createReducer(
   initialState,
-  on(setToken, (state: State) => ({
+  on(setToken, (state: State, { token: string }) => ({
     ...state,
-    token: state.token,
+    token: string,
   }))
 );
