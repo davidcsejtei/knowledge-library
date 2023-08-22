@@ -11,17 +11,19 @@ import { selectTokenA } from 'src/app/authentication/selectors/authentication.se
 export class NavigationComponent {
   token$ = this.store.select(selectTokenA);
   isLoggedIn = false;
+  token = '';
 
   constructor(private store: Store) {
     this.token$.subscribe((token) => {
       console.log('From nav: ', token);
+      this.token = token;
       this.isLoggedIn = token !== '';
     });
   }
 
   logOut() {
-    localStorage.removeItem('token');
     this.isLoggedIn = false;
+    this.token = '';
     this.store.dispatch(setToken({ token: '' }));
   }
 }

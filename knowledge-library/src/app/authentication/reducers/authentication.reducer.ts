@@ -1,6 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
 import { setToken } from '../actions/authentication.actions';
 
+export interface AppState {
+  authentication: State;
+}
+
 export interface State {
   token: string;
 }
