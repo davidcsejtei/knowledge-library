@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import {
+  selectToken,
+  selectTokenA,
+} from '../../selectors/authentication.selectors';
+import { setToken } from '../../actions/authentication.actions';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +20,16 @@ export class LoginComponent {
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
+  token$ = this.store.select(selectTokenA);
+
   constructor(
     private formBuilder: FormBuilder,
     private auth: Auth,
-    private router: Router
-  ) {}
+    private router: Router,
+    private store: Store
+  ) {
+    this.token$.subscribe((token) => console.log(token));
+  }
 
   get email() {
     return this.logInForm.get('email');
@@ -36,9 +47,11 @@ export class LoginComponent {
         this.password.value as string
       )
         .then((result) => {
-          result.user
-            .getIdToken()
-            .then((token) => localStorage.setItem('token', token));
+          result.user.getIdToken().then((token) => {
+            localStorage.setItem('token', token);
+            this.store.dispatch(setToken({ token: token }));
+          });
+
           this.router.navigate(['/']);
         })
         .catch((error) => {
