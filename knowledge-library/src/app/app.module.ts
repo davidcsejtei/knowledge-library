@@ -23,6 +23,8 @@ import {
 } from './authentication/reducers/authentication.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
+import { KnowledgeTestComponent } from './knowledge-test/knowledge-test.component';
+import { AddCategoriesComponent } from './add-categories/add-categories.component';
 
 const reducers: ActionReducerMap<AppState> = {
   authentication: authenticationReducer,
@@ -47,6 +49,8 @@ const metaReducers: Array<MetaReducer<AppState, any>> = [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    KnowledgeTestComponent,
+    AddCategoriesComponent,
   ],
   imports: [
     ReactiveFormsModule,
