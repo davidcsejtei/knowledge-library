@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { selectTokenA } from './authentication/selectors/authentication.selectors';
-import { Store } from '@ngrx/store';
+// import { selectTokenA } from './authentication/selectors/authentication.selectors';
+// import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +10,9 @@ import { Store } from '@ngrx/store';
 export class AppComponent {
   title = 'knowledge-library';
 
-  token$ = this.store.select(selectTokenA);
+  // token$ = this.store.select(selectTokenA);
 
-  constructor(private store: Store) {
-    this.token$.subscribe((token) => console.log('Home: ', token));
-  }
+  // constructor(private store: Store) {
+  //   this.token$.subscribe((token) => console.log('Home: ', token));
+  // }
 }

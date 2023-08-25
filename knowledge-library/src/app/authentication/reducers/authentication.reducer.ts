@@ -1,19 +1,15 @@
 import { createReducer, on } from '@ngrx/store';
 import { setToken } from '../actions/authentication.actions';
 
-export interface AppState {
-  authentication: State;
-}
-
-export interface State {
+export interface AuthenticationState {
   token: string;
 }
 
-const initialState: State = { token: '' };
+const initialState: AuthenticationState = { token: '' };
 
 export const authenticationReducer = createReducer(
   initialState,
-  on(setToken, (state: State, { token: string }) => ({
+  on(setToken, (state: AuthenticationState, { token: string }) => ({
     ...state,
     token: string,
   }))

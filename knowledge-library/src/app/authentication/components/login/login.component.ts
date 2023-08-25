@@ -3,10 +3,7 @@ import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import {
-  selectToken,
-  selectTokenA,
-} from '../../selectors/authentication.selectors';
+import { selectUserToken } from '../../selectors/authentication.selectors';
 import { setToken } from '../../actions/authentication.actions';
 
 @Component({
@@ -20,7 +17,7 @@ export class LoginComponent {
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  token$ = this.store.select(selectTokenA);
+  token$ = this.store.select(selectUserToken);
 
   constructor(
     private formBuilder: FormBuilder,

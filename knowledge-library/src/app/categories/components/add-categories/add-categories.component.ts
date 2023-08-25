@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+// import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-add-categories',
@@ -15,7 +16,9 @@ export class AddCategoriesComponent {
     return this.addCategoryForm.get('name');
   }
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder // private categoryService: CategoryService
+  ) {}
 
   saveCategory() {
     console.log(this.addCategoryForm.value);

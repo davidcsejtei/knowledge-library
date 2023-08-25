@@ -4,7 +4,7 @@ import { LoginComponent } from './authentication/components/login/login.componen
 import { RegisterComponent } from './authentication/components/register/register.component';
 import { authGuard } from './authentication/guards/auth.guard';
 import { KnowledgeTestComponent } from './knowledge-test/knowledge-test.component';
-import { AddCategoriesComponent } from './add-categories/add-categories.component';
+import { AddCategoriesComponent } from './categories/components/add-categories/add-categories.component';
 
 const routes: Routes = [
   {

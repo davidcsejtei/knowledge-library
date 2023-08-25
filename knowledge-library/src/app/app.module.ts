@@ -11,37 +11,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import {
-  ActionReducer,
-  ActionReducerMap,
-  MetaReducer,
-  StoreModule,
-} from '@ngrx/store';
-import {
-  AppState,
-  authenticationReducer,
-} from './authentication/reducers/authentication.reducer';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { localStorageSync } from 'ngrx-store-localstorage';
 import { KnowledgeTestComponent } from './knowledge-test/knowledge-test.component';
-import { AddCategoriesComponent } from './add-categories/add-categories.component';
+import { AddCategoriesComponent } from './categories/components/add-categories/add-categories.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { UserState } from './authentication/selectors/authentication.selectors';
+import { CategoriesFeatureState } from './categories/selectors/category.selectors';
+import { reducers, metaReducers } from './reducers';
+// import { provideDatabase, getDatabase } from '@angular/fire/database';
 
-const reducers: ActionReducerMap<AppState> = {
-  authentication: authenticationReducer,
-};
-
-function localStorageSyncReducer(
-  reducer: ActionReducer<AppState>
-): ActionReducer<AppState> {
-  return localStorageSync({
-    keys: ['authentication'],
-    rehydrate: true,
-  })(reducer);
+export interface AppState {
+  user: UserState;
+  categories: CategoriesFeatureState;
 }
-
-const metaReducers: Array<MetaReducer<AppState, any>> = [
-  localStorageSyncReducer,
-];
 
 @NgModule({
   declarations: [
@@ -49,10 +31,10 @@ const metaReducers: Array<MetaReducer<AppState, any>> = [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    KnowledgeTestComponent,
     AddCategoriesComponent,
   ],
   imports: [
+    KnowledgeTestComponent,
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
@@ -63,6 +45,7 @@ const metaReducers: Array<MetaReducer<AppState, any>> = [
       metaReducers,
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    // provideDatabase(() => getDatabase()),
   ],
   providers: [],
   bootstrap: [AppComponent],

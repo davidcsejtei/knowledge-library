@@ -1,13 +1,21 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { State } from '../reducers/authentication.reducer';
 
-export const authenticationFeatureKey = 'authentication';
+// // AppState
+// {
+//   ...
+//   // UserState
+//   user: {
+//     token: "1213"
+//   }
+// }
 
-export const selectToken = createFeatureSelector<State>(
-  authenticationFeatureKey
-);
+export interface UserState {
+  token: string;
+}
 
-export const selectTokenA = createSelector(
-  selectToken,
-  (state: State) => state.token
+export const userFeature = createFeatureSelector<UserState>('user');
+
+export const selectUserToken = createSelector(
+  userFeature,
+  (state: UserState) => state.token
 );

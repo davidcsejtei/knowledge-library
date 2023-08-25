@@ -1,8 +1,14 @@
 <div class="row mt-4 mb-4">
-  <div *ngFor="let question of questions" class="col-auto">
-    <!-- <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front"> -->
+  <div *ngFor="let category of categories | async" class="col-auto">
+    {{ category.name }}
+  </div>
+  <!-- <div *ngFor="let category of categoryList" class="col-auto">
+    {{ category.name }}
+    {{ count }}
+  </div> -->
+</div>
+<div class="row mt-4 mb-4">
+  <!-- <div *ngFor="let question of questions" class="col-auto">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{ question.question }}</h5>
@@ -11,13 +17,5 @@
         </p>
       </div>
     </div>
-    <!-- </div>
-        <div class="flip-card-back">
-          <h1>John Doe</h1>
-          <p>Architect & Engineer</p>
-          <p>We love that guy</p>
-        </div>
-      </div>
-    </div> -->
-  </div>
+  </div> -->
 </div>

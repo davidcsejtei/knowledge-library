@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "knowledge-library-3037d": {
+      "hosting": {
+        "knowledge-library": [
+          "knowledge-library-3037d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "knowledge-library-3037d"
+  }
+}
