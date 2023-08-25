@@ -17,7 +17,7 @@ export class KnowledgeTestComponent {
 
   constructor(private store: Store, private categoryService: CategoryService) {
     this.categories.subscribe((categories) => {
-      console.log('From component: ', categories);
+      console.log('Categories fron component: ', categories);
     });
   }
 
