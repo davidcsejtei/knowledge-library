@@ -17,7 +17,7 @@ export function localStorageSyncReducer(
   reducer: ActionReducer<AppState>
 ): ActionReducer<AppState> {
   return localStorageSync({
-    keys: ['user'],
+    keys: ['user', 'categories'],
     rehydrate: true,
   })(reducer);
 }
