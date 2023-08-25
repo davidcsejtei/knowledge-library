@@ -18,7 +18,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { UserState } from './authentication/selectors/authentication.selectors';
 import { CategoriesFeatureState } from './categories/selectors/category.selectors';
 import { reducers, metaReducers } from './reducers';
-// import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { EffectsModule } from '@ngrx/effects';
+import * as categoryEffects from './categories/effects/category.effect';
 
 export interface AppState {
   user: UserState;
@@ -44,8 +46,9 @@ export interface AppState {
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),
+    // EffectsModule.forRoot([categoryEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    // provideDatabase(() => getDatabase()),
+    provideDatabase(() => getDatabase()),
   ],
   providers: [],
   bootstrap: [AppComponent],

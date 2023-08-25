@@ -3,6 +3,7 @@ import { PushPipe } from '@ngrx/component';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectAllCategories } from '../categories/selectors/category.selectors';
+import { CategoryService } from '../categories/services/category.service';
 
 @Component({
   selector: 'app-knowledge-test',
@@ -13,16 +14,11 @@ import { selectAllCategories } from '../categories/selectors/category.selectors'
 })
 export class KnowledgeTestComponent {
   categories = this.store.select(selectAllCategories);
-  categoryList: any[] = [];
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private categoryService: CategoryService) {
     this.categories.subscribe((categories) => {
       console.log('From component: ', categories);
     });
-  }
-
-  get count() {
-    return this.categoryList.length;
   }
 
   questions = [
