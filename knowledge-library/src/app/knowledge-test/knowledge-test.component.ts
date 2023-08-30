@@ -16,19 +16,8 @@ export class KnowledgeTestComponent {
   categories = this.store.select(selectAllCategories);
 
   constructor(private store: Store, private categoryService: CategoryService) {
-    this.categories.subscribe((categories) => {
-      console.log('Categories fron component: ', categories);
-    });
+    // this.categories.subscribe((categories) => {
+    //   console.log('Categories fron component: ', categories);
+    // });
   }
-
-  questions = [
-    {
-      question: 'What is the capital of France?',
-      answer: 'Paris',
-    },
-    {
-      question: 'Who is CEO of Tesla?',
-      answer: 'Elon Musk',
-    },
-  ];
 }

@@ -26,19 +26,19 @@
         </li>
       </ul>
       <ul class="navbar-nav d-flex">
-        <li *ngIf="!isLoggedIn" class="nav-item">
+        <li class="nav-item">
           <a routerLink="/login" routerLinkActive="active" class="nav-link"
-            >Log in</a
-          >
+            >Log in
+          </a>
         </li>
-        <li *ngIf="isLoggedIn" class="nav-item">
+        <li class="nav-item">
           <a (click)="logOut()" routerLinkActive="active" class="nav-link"
             >Log out</a
           >
         </li>
-        <li *ngIf="!isLoggedIn" class="nav-item">
+        <li class="nav-item">
           <a routerLink="/register" class="nav-link"
-            >Register {{ isLoggedIn }}</a
+            >Register {{ token | async }}</a
           >
         </li>
       </ul>

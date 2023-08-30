@@ -45,8 +45,6 @@ export class LoginComponent {
       )
         .then((result) => {
           result.user.getIdToken().then((token) => {
-            console.log('token from auth: ', token);
-            // localStorage.setItem('token', token);
             this.store.dispatch(setToken({ token }));
           });
 
